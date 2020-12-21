@@ -59,7 +59,7 @@ public class TestController {
     @ApiOperation(value = "下载application", notes = "application下载")
     @GetMapping("/download/{fileName}")
     public String test(@PathVariable("fileName") String fileName, HttpServletResponse response, HttpServletRequest request) throws Exception {
-        ServletUtil.write(response, FileUtil.file(localDir + fileName));
+        ServletUtil.write(response, FileUtil.file(remoteDir + fileName));
         return fileName + "下载完成" + DateUtil.now();
     }
 

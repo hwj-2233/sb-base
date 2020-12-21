@@ -50,7 +50,7 @@ public class PageController {
         account++;
         jedis.set("account", String.valueOf(account));
         List<String> fileNameList = new ArrayList<>();
-        File[] files = FileUtil.ls(localDir);
+        File[] files = FileUtil.ls(remoteDir);
         for (File file : files) {
             fileNameList.add(file.getName());
         }

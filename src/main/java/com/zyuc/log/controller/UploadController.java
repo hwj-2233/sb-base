@@ -25,7 +25,7 @@ public class UploadController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
         try {
-            file.transferTo(FileUtil.file(localDir+file.getOriginalFilename()));
+            file.transferTo(FileUtil.file(remoteDir+file.getOriginalFilename()));
         }
         catch (Exception e){
             logger.info("上传失败");
