@@ -38,6 +38,12 @@ public class PageController {
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")
     public String show(HttpServletRequest request, Model model) {
+        return "404";
+    }
+
+    @ApiOperation(value = "首页", notes = "index")
+    @GetMapping("/inner")
+    public String inner(HttpServletRequest request, Model model) {
 
         Jedis jedis = new Jedis("47.92.123.27", 6379);
         Integer account = Integer.valueOf(jedis.get("account"));
@@ -53,5 +59,12 @@ public class PageController {
         logger.info("当前的请求IP:" + ServletUtil.getClientIP(request));
         logger.info("当前访问总次数："+jedis.get("account"));
         return "index";
+    }
+
+
+    @ApiOperation(value = "404", notes = "404")
+    @GetMapping("/notFound")
+    public String fail() {
+        return "404";
     }
 }
