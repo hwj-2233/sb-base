@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+/*利用css继承性，设定全局字体*/
+body {
+    font-family: "微软雅黑", "黑体", "文泉驿正黑";
+}
+
+/* 设置导航栏标题背景 */
+nav {
+    background-image: url(../images/ocean.png);
+    background-size: cover;
+
+}
+
+.row-5, .row-4, .row-3, .row-2, .row-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.row-5 {
+    -webkit-line-clamp: 5;
+}
+
+.row-4 {
+    -webkit-line-clamp: 4;
+}
+
+.row-3 {
+    -webkit-line-clamp: 3;
+}
+
+.row-2 {
+    -webkit-line-clamp: 2;
+}
+
+.row-1 {
+    -webkit-line-clamp: 1;
+}

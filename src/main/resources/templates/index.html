@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>website</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css"
+          href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css"/>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" type="text/css" href="../css/layout3.css"/>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+
+    
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.css" rel="external nofollow stylesheet"
+    />
+    <style>
+        #first {
+            text-align: center;
+        }
+
+        .round_icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ord_icon {
+            width: 250px;
+            height: 200px;
+            border-radius: 0%;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #back {
+            background: url("../images/background.png");
+            background-size: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: alpha(opacity=90);
+            -moz-opacity: 0.8;
+            -khtml-opacity: 0.8;
+            opacity: 0.8;
+        }
+
+        video {
+            object-fit: fill;
+            width: 700px;
+            height: 400px;
+        }
+
+    </style>
+</head>
+
+<body id="back">
+<!--网页最上方的留白-->
+<header>
+    <!-- class.container 容器定位 的作用是进行居中布局 -->
+
+</header>
+
+<!--网页 导航栏 在layout.css 文件中设置在背景图片-->
+<nav>
+    <!-- class.container 容器定位 用于设置内容居中 -->
+    <div class="container">
+        <h1>
+            <b>可达鸭的个人网站</b>------------------------------
+            <small style="color:black" id="nowTime"></small>
+        </h1>
+
+        <!--导航栏-->
+        <div>
+            <!-- class="nav navbar-nav" 定义导航条 -->
+            <ul class="nav navbar-nav">
+                <li><img src="../static/favicon.ico" class="round_icon"
+                         alt=""></li>
+            </ul>
+            <!-- class="nav navbar-nav" 定义导航条 向右侧浮动 -->
+            <ul class="nav navbar-nav navbar-center">
+                <li><img src="../images/nai.png" class="round_icon"
+                         alt=""></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><img src="../images/nainai.png" class="ord_icon"-->
+                <!--alt=""></li>-->
+
+            </ul>
+        </div>
+        <!-- /导航栏 -->
+    </div>
+</nav>
+
+<!-- 主体内容区域 -->
+<section>
+    <!-- class.container 容器定位 用于设置内容居中 -->
+    <div class="container">
+        <!-- 设置 class="row" 内部元素采用栅格定位 -->
+        <div class="row">
+            <!--主要内容区域：class="col-md-9" 占用9列-->
+            <div class="col-md-9">
+                <!-- 主体标题 page-header 带有下划线的标题效果 -->
+                <h2 class="page-header">
+                    <span class="fa fa-star-o"></span> TOP FAV
+                </h2>
+                <!--置顶文章，使用巨幕-->
+                <div class="jumbotron">
+                    <!--第一篇 文章 就是置顶文章-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <video   autoplay="autoplay" controls="controls">
+                                    <source src="../video/bingbing.mp4" type="video/mp4"></source>
+                                </video>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!--/container-->
+                </div>
+                <!--/置顶文章，使用巨幕-->
+
+                <!--置顶第二到第四，三篇文章-->
+                <!--嵌套使用栅格布局-->
+                <div class="container">
+                    <br/>
+                    <span id="time"></span>
+                    <div class="row">
+                        <input class="btn btn-info btn-xs" type="file" name="file"/><br/>
+                        <div class="col-lg-5"
+                             style="padding-left: 0; padding-right: 0; margin-bottom: 0px;">
+                            <span style="color: red">务必确保文件小于10M，否则上传失败,待进度条100%后，刷新页面，右侧列表即可出现您上传的文件</span>
+                            <div class="progress progress-striped active" style="display: ">
+                                <div id="progressBar" class="progress-bar progress-bar-success"
+                                     role="progressbar" aria-valuemin="0" aria-valuenow="0"
+                                     aria-valuemax="100" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <!-- 显示上传速度 -->
+                        <div id="showInfo" class="col-lg-2">0KB/s</div>
+                    </div>
+                    <!-- 显示文件信息 -->
+                    <div id="showFieInfo" class="row">
+                        <label name="upfileName"></label><br/>
+                        <label name="upfileSize"></label><br/>
+                        <label name="upfileType"></label><br/>
+                    </div>
+                    <div class="row">
+                        <input class="btn btn-success btn-xs" type="button" name="upload" value="上传"/>
+                        <input class="btn btn-success btn-xs" type="button" name="cancelUpload" value="取消"/>
+                    </div>
+                </div>
+                </br>
+                </br>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 class="row-1">
+                                    <a href="">标题未定</a>
+                                </h3>
+                                <p class="row-5">
+                                    标题未定</p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="../images/nainai.png"
+                                     class="img-rounded img-responsive"/>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /panel-body -->
+                    <!-- /panel-footer -->
+                </div>
+                <!-- /panel -->
+
+                <!--第七篇-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 class="row-1">
+                                    <a href="">标题未定</a>
+                                </h3>
+                                <p class="row-5">
+                                    标题未定</p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="../images/nainai.png"
+                                     class="img-rounded img-responsive"/>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /panel-body -->
+                    <!-- /panel-footer -->
+                </div>
+                <!-- /panel -->
+
+                <!--第八篇-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 class="row-1">
+                                    <a href="">标题未定</a>
+                                </h3>
+                                <p class="row-5">
+                                    标题未定</p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="../images/nainai.png"
+                                     class="img-rounded img-responsive"/>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- /panel-body -->
+                    <!-- /panel-footer -->
+                </div>
+                <!-- /panel -->
+
+            </div>
+            <!-- /col-md-9 -->
+
+            <!--右侧边栏区域：class="col-md-3" 占用3列-->
+            <div class="col-md-3">
+                <h2 class="page-header">
+                    <span class="fa fa-thumbs-o-up"></span>奥利给！！！
+                </h2>
+                <!--搜索-->
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-heading">
+                        <h3>
+                            <span class="fa fa-search">虚假的搜索</span>
+                        </h3>
+                    </li>
+                    <li class="list-group-item">
+                        <!-- form-inline: 声明行内横向表单  -->
+                        <form class="form-inline" action="" method="post">
+                            <!-- form-group 定义一项输入数据，必须包含label标签和input标签 -->
+                            <div class="form-group">
+                                <!-- 通过为 label 设置 .sr-only 类将其隐藏 -->
+                                <label class="sr-only" for="title"></label>
+                                <!-- form-control 声明表单输入控件，用在input元素上 -->
+                                <input type="text" readonly="readonly" class="form-control" id="title" name="title"
+                                       placeholder="别输入，没吊用">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+                <!--最新 list-group 定义列表组件 -->
+                <ul class="list-group">
+                    <!-- list-group-item 定义列表项目， list-group-item-heading 定义列表项目标题 -->
+                    <li class="list-group-item list-group-item-heading">
+                        <h3>
+                            <span class="fa fa-calendar">可下载文件名列表</span>
+                            <small th:text="'(共'+${size}+'个文件）'"></small>
+
+                        </h3>
+                    </li>
+                    <li th:each="fileName:${fileNameList}" class="list-group-item"><a
+                            th:href="@{'/download/'+${fileName}}"
+                            class="row-1"
+                            th:text="${fileName}"></a></li>
+                </ul>
+                <!--链接-->
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-heading">
+                        <h3>
+                            <span class="fa fa-link"></span>链接
+                        </h3>
+                    </li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="http://www.163.com">网易</a></li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="https://github.com/">github</a></li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="http://www.baidu.com">百度</a></li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="http://cn.bing.com/">必应</a></li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="http://www.qq.com">腾讯</a></li>
+                    <li class="list-group-item"><a target="_blank"
+                                                   href="http://www.taobao.com">淘宝</a></li>
+                </ul>
+
+            </div>
+            <!-- /col-md-3 -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!--/container-->
+</section>
+<!-- /主体内容区域 -->
+
+<!--网页底部， class.well 用于设置背景效果-->
+<footer>
+    <!-- class.container 的作用是进行居中布局 -->
+    <div id="first">
+        <b> 本网站只用于本人忘记带u盘为下载资源而开发，如有冒犯，多有得罪 联系方式：qq:2233128678
+            <a href="">肥宅快乐水</a> 版权所有
+        </b> <span class="pull-right"> <b>Version</b> 2.1.0
+			</span>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="../bootstrap3/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap3/js/bootstrap.js"></script>
+<script type="text/javascript" src="../bootstrap3/js/holder.js"></script>
+<script type="text/javascript" src="../bootstrap3/js/html5shiv.min.js"></script>
+<script type="text/javascript"
+        src="../bootstrap3/js/css3-mediaqueries.js"></script>
+<script type="text/javascript" src="../bootstrap3/js/respond.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="http://www.lmlblog.com/blog/14/js/Snow.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+    .snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 100001;
+    }
+</style>
+<div class="snow-container"></div>
+
+<script type="text/javascript">
+    //    window.location.href = "/showFileNames";
+    var t = null;
+    t = setTimeout(time, 1000);//開始运行
+    function time() {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+        var h = dt.getHours();//获取时
+        var m = dt.getMinutes();//获取分
+        var s = dt.getSeconds();//获取秒
+        document.getElementById("nowTime").innerHTML = "时间：" + h + "时" + m + "分" + s + "秒";
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+    }
+
+</script>
+<script type="text/javascript">
+    var fileBtn = $("input[name=file]");
+    var processBar = $("#progressBar");
+    var uploadBtn = $("input[name=upload]");
+    var canelBtn = $("input[name=cancelUpload]");
+    var ot;//上传开始时间
+    var oloaded;//已上传文件大小
+    fileBtn.change(function () {
+        var fileObj = fileBtn.get(0).files[0]; //js获取文件对象
+        if (fileObj) {
+            var fileSize = getSize(fileObj.size);
+            $("label[name=upfileName]").text('文件名：' + fileObj.name);
+            $("label[name=upfileSize]").text('文件大小：' + fileSize);
+            $("label[name=upfileType]").text('文件类型：' + fileObj.type);
+            uploadBtn.attr('disabled', false);
+        }
+    });
+    // 上传文件按钮点击的时候
+    uploadBtn.click(function () {
+        // 进度条归零
+        setProgress(0);
+        // 上传按钮禁用
+        $(this).attr('disabled', true);
+        // 进度条显示
+        showProgress();
+        // 上传文件
+        uploadFile();
+    });
+
+    function uploadFile() {
+        var url = "/upload";
+        var fileObj = fileBtn.get(0).files[0];
+        if (fileObj == null) {
+            alert("请选择文件");
+            return;
+        }
+        // FormData 对象
+        var form = new FormData();
+        form.append('file', fileObj); // 文件对象
+        // XMLHttpRequest 对象
+        var xhr = new XMLHttpRequest();
+        //true为异步处理
+        xhr.open('post', url, true);
+        //上传开始执行方法
+        xhr.onloadstart = function () {
+            console.log('开始上传')
+            ot = new Date().getTime();  //设置上传开始时间
+            oloaded = 0;//已上传的文件大小为0
+        };
+        xhr.upload.addEventListener('progress', progressFunction, false);
+        xhr.addEventListener("load", uploadComplete, false);
+        xhr.addEventListener("error", uploadFailed, false);
+        xhr.addEventListener("abort", uploadCanceled, false);
+        xhr.send(form);
+
+        function progressFunction(evt) {
+            debugger;
+            if (evt.lengthComputable) {
+                var completePercent = Math.round(evt.loaded / evt.total * 100)
+                    + '%';
+                processBar.width(completePercent);
+                processBar.text(completePercent);
+                var time = $("#time");
+                var nt = new Date().getTime();   //获取当前时间
+                var pertime = (nt - ot) / 1000;    //计算出上次调用该方法时到现在的时间差，单位为s
+                ot = new Date().getTime();     //重新赋值时间，用于下次计算
+                var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b
+                oloaded = evt.loaded;        //重新赋值已上传文件大小
+                //上传速度计算
+                var speed = perload / pertime;//单位b/s
+                var bspeed = speed;
+                var units = 'b/s';//单位名称
+                if (speed / 1024 > 1) {
+                    speed = speed / 1024;
+                    units = 'k/s';
+                }
+                if (speed / 1024 > 1) {
+                    speed = speed / 1024;
+                    units = 'M/s';
+                }
+                speed = speed.toFixed(1);
+                //剩余时间
+                var resttime = ((evt.total - evt.loaded) / bspeed).toFixed(1);
+                $("#showInfo").html(speed + units + '，剩余时间：' + resttime + 's');
+            }
+        }
+
+        //上传成功后回调
+        function uploadComplete(evt) {
+            uploadBtn.attr('disabled', false);
+            console.log('上传完成')
+        };
+
+        //上传失败回调
+        function uploadFailed(evt) {
+            console.log('上传失败' + evt.target.responseText);
+        }
+
+        //终止上传
+        function cancelUpload() {
+            xhr.abort();
+        }
+
+        //上传取消后回调
+        function uploadCanceled(evt) {
+            console.log('上传取消,上传被用户取消或者浏览器断开连接:' + evt.target.responseText);
+        }
+
+        canelBtn.click(function () {
+            uploadBtn.attr('disabled', false);
+            cancelUpload();
+        })
+    }
+
+    function getSize(size) {
+        var fileSize = '0KB';
+        if (size > 1024 * 1024) {
+            fileSize = (Math.round(size / (1024 * 1024))).toString() + 'MB';
+        } else {
+            fileSize = (Math.round(size / 1024)).toString() + 'KB';
+        }
+        return fileSize;
+    }
+
+    function setProgress(w) {
+        processBar.width(w + '%');
+    }
+
+    function showProgress() {
+        processBar.parent().show();
+    }
+
+    function hideProgress() {
+        processBar.parent().hide();
+    }
+</script>
+<!--给WordPress网站添加鼠标点击爆炸五颜六色特效-->
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+<script type="text/javascript" src="https://a-oss.zmki.cn/20190502/baozatexiao.js"></script>
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script>
+<canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+</html>

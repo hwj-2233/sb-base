@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+/*利用css继承性，设定全局字体*/
+body{
+	font-family: "微软雅黑","黑体","文泉驿正黑";
+}
+/* 设置导航栏标题背景 */
+nav{
+	background-image: url(../images/ocean.png);
+    background-size: cover;
+
+
+
+}
