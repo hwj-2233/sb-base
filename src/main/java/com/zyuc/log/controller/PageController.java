@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +31,9 @@ public class PageController {
 
     private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 
-    private static final String localDir = "D:/Google/";
+    @Value("${Directory}")
+    private  String Directory;
 
-    private static final String remoteDir = "/application/";
 
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")
@@ -44,7 +45,7 @@ public class PageController {
     @GetMapping("/inner")
     public String getInner(HttpServletRequest request, Model model) {
         List<String> fileNameList = new ArrayList<>();
-        File[] files = FileUtil.ls(remoteDir);
+        File[] files = FileUtil.ls(Directory);
         for (File file : files) {
             fileNameList.add(file.getName());
         }
@@ -53,11 +54,5 @@ public class PageController {
         logger.info("当前访问时间："+DateUtil.now());
         logger.info("当前的请求IP:" + ServletUtil.getClientIP(request));
         return "index";
-    }
-
-    @GetMapping(value="/getUpload")
-    public String upload(){
-
-        return "upload";
     }
 }

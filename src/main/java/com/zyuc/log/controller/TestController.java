@@ -51,15 +51,14 @@ public class TestController {
     @Value("${server.port}")
     private String port;
 
-    private static final String localDir = "D:/Google/";
-
-    private static final String remoteDir = "/application/";
+    @Value("${Directory}")
+    private  String Directory;
 
 
     @ApiOperation(value = "下载application", notes = "application下载")
     @GetMapping("/download/{fileName}")
     public String test(@PathVariable("fileName") String fileName, HttpServletResponse response, HttpServletRequest request) throws Exception {
-        ServletUtil.write(response, FileUtil.file(remoteDir + fileName));
+        ServletUtil.write(response, FileUtil.file(Directory + fileName));
         return fileName + "下载完成" + DateUtil.now();
     }
 
