@@ -36,7 +36,7 @@ public class MessageService {
         HttpClient client = new HttpClient();
         PostMethod post = new PostMethod("http://gbk.api.smschinese.cn");
         post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gbk");
-        NameValuePair[] data = {new NameValuePair("Uid", "hwj2233"), new NameValuePair("Key", "d41d8cd98f00b204e980"), new NameValuePair("smsMob", sendPhoneNum), new NameValuePair("smsText", content)};
+        NameValuePair[] data = {new NameValuePair("Uid", "hwj2233"), new NameValuePair("Key", "d41d8cd98f00b204e980"), new NameValuePair("smsMob", sendPhoneNum), new NameValuePair("smsText", "验证码"+content)};
         post.setRequestBody(data);
 
         client.executeMethod(post);
