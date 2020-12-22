@@ -12,16 +12,9 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class TestTask {
-    /**
-     * 每天将服务器的日志发送到我的qq邮箱
-     * 发送一个日志文件，redis存一个文件名避免重复发送
-     */
+
     @Autowired
     private MailService mailService;
-
-    private static final String localLogDir = "D:/logs/logback/";
-
-    private static final String remoteLogDir = "/logs/logback/";
 
     @Scheduled(cron = "${data.consumer.cron}")
     public void report() {
