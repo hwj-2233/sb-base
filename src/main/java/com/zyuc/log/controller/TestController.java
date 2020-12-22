@@ -46,8 +46,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Api("controller")
 public class TestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
-
     @Value("${server.port}")
     private String port;
 

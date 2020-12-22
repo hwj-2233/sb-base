@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.zyuc.log.service.MailService;
+import com.zyuc.log.service.MessageService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -29,7 +30,8 @@ import java.util.List;
 @Slf4j
 public class PageController {
 
-    private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+    @Autowired
+    private MessageService messageService;
 
     @Value("${Directory}")
     private  String Directory;
@@ -37,7 +39,7 @@ public class PageController {
 
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")
-    public String getShow() {
+    public String getShow(HttpServletRequest request) {
         return "404";
     }
 
@@ -51,8 +53,8 @@ public class PageController {
         }
         model.addAttribute("size", files.length);
         model.addAttribute("fileNameList",fileNameList);
-        logger.info("当前访问时间："+DateUtil.now());
-        logger.info("当前的请求IP:" + ServletUtil.getClientIP(request));
+        log.info("当前访问时间："+DateUtil.now());
+        log.info("当前的请求IP:" + ServletUtil.getClientIP(request));
         return "index";
     }
 }

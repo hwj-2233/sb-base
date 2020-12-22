@@ -2,6 +2,7 @@ package com.zyuc.log.controller;
 
 import cn.hutool.core.io.FileUtil;
 import com.zyuc.log.constant.SystemConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,22 +19,22 @@ import org.springframework.web.servlet.ModelAndView;
  * @date 2020/11/06
  **/
 @RestController
+@Slf4j
 public class UploadController {
 
     @Value("${Directory}")
     private String Directory;
 
-    private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
         try {
             file.transferTo(FileUtil.file(Directory + file.getOriginalFilename()));
         } catch (Exception e) {
-            logger.info("上传失败");
+            log.info("上传失败");
             return "fail";
         }
-        logger.info("上传成功" + file.getOriginalFilename());
+        log.info("上传成功" + file.getOriginalFilename());
 
         return "sucess";
     }
