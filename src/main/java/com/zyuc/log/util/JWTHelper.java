@@ -26,8 +26,8 @@ public class JWTHelper {
      */
     public static String generateToken(IJWTInfo jwtInfo, String priKeyPath, int expire) throws Exception {
         String compactJws = Jwts.builder()
-                .setSubject(jwtInfo.getUserid())
-                .claim(CommonConstants.JWT_KEY_NETUSERID, jwtInfo.getNetUserid())
+                .setSubject(jwtInfo.getUserId())
+                .claim(CommonConstants.JWT_KEY_NETUSERID, jwtInfo.getNetUserId())
                 .claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getUserName())
                 .setExpiration(DateTime.now().plusSeconds(expire).toDate())
                 .signWith(SignatureAlgorithm.HS512, priKeyPath)
@@ -46,8 +46,8 @@ public class JWTHelper {
      */
     public static String generateToken(IJWTInfo jwtInfo, byte priKey[], int expire) throws Exception {
         String compactJws = Jwts.builder()
-                .setSubject(jwtInfo.getUserid())
-                .claim(CommonConstants.JWT_KEY_NETUSERID, jwtInfo.getNetUserid())
+                .setSubject(jwtInfo.getUserId())
+                .claim(CommonConstants.JWT_KEY_NETUSERID, jwtInfo.getNetUserId())
                 .claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getUserName())
                 .setExpiration(DateTime.now().plusSeconds(expire).toDate())
                 .signWith(SignatureAlgorithm.HS512, priKey)

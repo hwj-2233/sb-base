@@ -5,12 +5,12 @@ public interface IJWTInfo {
      * 获取用户ID
      * @return
      */
-    String getUserid();
+    String getUserId();
     /**
      * 获取用户NetUserid
      * @return
      */
-    String getNetUserid();
+    String getNetUserId();
 
     /**
      * 获取用户名

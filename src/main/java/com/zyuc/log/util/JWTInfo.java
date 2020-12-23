@@ -13,7 +13,7 @@ public class JWTInfo implements Serializable, IJWTInfo {
 		this.netuserid = netuserid;
 	}
 	@Override
-	public String getUserid() {
+	public String getUserId() {
 		return userid;
 	}
 
@@ -22,7 +22,7 @@ public class JWTInfo implements Serializable, IJWTInfo {
 	}
 
 	@Override
-	public String getNetUserid() {
+	public String getNetUserId() {
 		return netuserid;
 	}
 
