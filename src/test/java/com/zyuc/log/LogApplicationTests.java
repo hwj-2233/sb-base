@@ -4,6 +4,9 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.zyuc.log.entity.Tenant;
+import com.zyuc.log.mapper.ITenantMapper;
 import com.zyuc.log.service.MessageService;
 import com.zyuc.log.util.IJWTInfo;
 import com.zyuc.log.util.JWTInfo;
@@ -14,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class LogApplicationTests {
@@ -23,6 +28,9 @@ public class LogApplicationTests {
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    ITenantMapper tenantMapper;
 
     @Test
     public void contextLoads() {
@@ -48,6 +56,15 @@ public class LogApplicationTests {
         IJWTInfo jwtInfo=new JWTInfo("1","哈喽","hwj");
         String token = jwtTokenUtil.generateToken(jwtInfo);
         System.err.println(token);
+
+    }
+
+    @Test
+    public void test5() throws Exception {
+        Tenant tenantUpdate=new Tenant();
+        tenantUpdate.setDescription("dashabi");
+        tenantUpdate.setId(111);
+        Integer tenant=tenantMapper.updateById(tenantUpdate);
 
     }
 

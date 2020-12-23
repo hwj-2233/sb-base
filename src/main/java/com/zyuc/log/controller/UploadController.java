@@ -1,7 +1,6 @@
 package com.zyuc.log.controller;
 
 import cn.hutool.core.io.FileUtil;
-import com.zyuc.log.constant.SystemConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
