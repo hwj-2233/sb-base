@@ -5,7 +5,9 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.zyuc.log.entity.SysLog;
 import com.zyuc.log.entity.Tenant;
+import com.zyuc.log.mapper.ISysLogMapper;
 import com.zyuc.log.mapper.ITenantMapper;
 import com.zyuc.log.service.MessageService;
 import com.zyuc.log.util.IJWTInfo;
@@ -16,6 +18,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 
 import java.util.Date;
 
@@ -28,6 +31,9 @@ public class LogApplicationTests {
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    ISysLogMapper sysLogMapper;
 
     @Autowired
     ITenantMapper tenantMapper;
@@ -53,7 +59,7 @@ public class LogApplicationTests {
 
     @Test
     public void test4() throws Exception {
-        IJWTInfo jwtInfo=new JWTInfo("1","哈喽","hwj");
+        IJWTInfo jwtInfo = new JWTInfo("1", "哈喽", "hwj");
         String token = jwtTokenUtil.generateToken(jwtInfo);
         System.err.println(token);
 
@@ -61,10 +67,18 @@ public class LogApplicationTests {
 
     @Test
     public void test5() throws Exception {
-        Tenant tenantUpdate=new Tenant();
+        Tenant tenantUpdate = new Tenant();
         tenantUpdate.setDescription("dashabi");
         tenantUpdate.setId(111);
-        Integer tenant=tenantMapper.updateById(tenantUpdate);
+        Integer tenant = tenantMapper.updateById(tenantUpdate);
+
+    }
+
+    @Test
+    public void test6() throws Exception {
+        SysLog sysLog = new SysLog();
+        sysLogMapper.insert(sysLog);
+
 
     }
 

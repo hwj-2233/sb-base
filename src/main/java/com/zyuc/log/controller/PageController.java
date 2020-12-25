@@ -3,6 +3,7 @@ package com.zyuc.log.controller;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.zyuc.log.annotation.MyLog;
 import com.zyuc.log.service.MailService;
 import com.zyuc.log.service.MessageService;
 import io.swagger.annotations.ApiOperation;
@@ -34,17 +35,19 @@ public class PageController {
     private MessageService messageService;
 
     @Value("${Directory}")
-    private  String Directory;
+    private String Directory;
 
 
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")
+    @MyLog(value = "访问首页")
     public String getShow(HttpServletRequest request) {
         return "404";
     }
 
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/inner")
+    @MyLog(value = "访问内部系统")
     public String getInner(HttpServletRequest request, Model model) {
         List<String> fileNameList = new ArrayList<>();
         File[] files = FileUtil.ls(Directory);
@@ -52,8 +55,8 @@ public class PageController {
             fileNameList.add(file.getName());
         }
         model.addAttribute("size", files.length);
-        model.addAttribute("fileNameList",fileNameList);
-        log.info("当前访问时间："+DateUtil.now());
+        model.addAttribute("fileNameList", fileNameList);
+        log.info("当前访问时间：" + DateUtil.now());
         log.info("当前的请求IP:" + ServletUtil.getClientIP(request));
         return "index";
     }
