@@ -5,6 +5,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.zyuc.log.constant.Color;
 import com.zyuc.log.entity.SysLog;
 import com.zyuc.log.entity.Tenant;
 import com.zyuc.log.entity.User;
@@ -80,8 +81,7 @@ public class LogApplicationTests {
 
     @Test
     public void test6() throws Exception {
-
-        System.out.println(user);
+        System.out.println(Color.BLANK.getName());
 
     }
 

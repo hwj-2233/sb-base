@@ -30,6 +30,7 @@ public class SysLog extends Model<SysLog> implements Serializable {
     private String params;
 
     private String ip;
+
     @TableField("create_date")
     private Date createDate;
 
