@@ -12,8 +12,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * xx
- */
+ * @author hongwj
+ * @date 2020/12/25
+ **/
 @TableName("cm_plat_tenant")
 public class Tenant extends Model<Tenant> {
 
