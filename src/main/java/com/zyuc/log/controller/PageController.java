@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,12 @@ import java.util.List;
 public class PageController {
 
     @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
+
+    @Autowired
     private MessageService messageService;
 
     @Value("${Directory}")
@@ -41,7 +48,9 @@ public class PageController {
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")
     @MyLog(value = "访问首页")
-    public String getShow(HttpServletRequest request) {
+    public String getShow() {
+        log.info(request.toString());
+        log.info(ServletUtil.getClientIP(request));
         return "404";
     }
 

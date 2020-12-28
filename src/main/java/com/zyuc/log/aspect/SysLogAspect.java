@@ -1,19 +1,18 @@
 package com.zyuc.log.aspect;
 
 /**
-
- *@author hongwj
-
- *@date 2020/12/25
-
+ * @author hongwj
+ * @date 2020/12/25
  **/
 
+import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
 
 import com.zyuc.log.annotation.MyLog;
 import com.zyuc.log.entity.SysLog;
 import com.zyuc.log.mapper.ISysLogMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,17 +20,19 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
 
-/**
- * 系统日志：切面处理类
- */
 @Aspect
 @Component
+@Slf4j
 public class SysLogAspect {
+
 
     @Autowired
     private ISysLogMapper sysLogService;
@@ -43,7 +44,11 @@ public class SysLogAspect {
 
     @AfterReturning("logPointCut()")
     public void saveSysLog(JoinPoint joinPoint) {
-        System.out.println("切面。。。。。");
+
+        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+
+        log.info("日志保存开始---->");
         //保存日志
         SysLog sysLog = new SysLog();
 
@@ -59,27 +64,23 @@ public class SysLogAspect {
             sysLog.setOperation(value);
         }
 
-        //获取请求的类名
-        String className = joinPoint.getTarget().getClass().getName();
         //获取请求的方法名
         String methodName = method.getName();
-        sysLog.setMethod(className + "." + methodName);
+        sysLog.setMethod(methodName);
 
         //请求的参数
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
-        String params = "null";
-        sysLog.setParams(params);
+        sysLog.setParams(null);
 
         sysLog.setCreateDate(new Date());
-//        //获取用户名
-//        sysLog.setUsername(ShiroUtils.getUserEntity().getUsername());
-//        //获取用户ip地址
-//        HttpServletRequest request = HttpUtil.getHttpServletRequest();
-//        sysLog.setIp(IPUtils.getIpAddr(request));
+        //获取用户名
+        sysLog.setUsername("内部测试");
+        sysLog.setIp(ServletUtil.getClientIP(request));
 
         //调用service保存SysLog实体类到数据库
         sysLogService.insert(sysLog);
+        log.info("保存日志成功");
     }
 
 }
