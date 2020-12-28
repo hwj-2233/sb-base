@@ -13,6 +13,7 @@
     <version>3.2.1-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
@@ -150,13 +151,85 @@
     </dependencies>
 
     <!--打包插件-->
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--fork: 如果没有该项配置,整个 devtools 不会起作用-->
+                    <fork>true</fork>
+                    <!--启动类-->
+                    <mainClass>com.com.zyuc.log.LogApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--创建一个自动可执行的jar或war文件 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 资源根目录排除各环境的配置，防止在生成目录中多余其它目录 -->
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>application*.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.properties</include>
+                    <include>application-${profiles.active}.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
+
+    <!-- 不同环境的配置 -->
+    <profiles>
+        <!--开发环境-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <!--默认激活-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--测试环境-->
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+        <!--生产环境-->
+        <!--<profile>-->
+            <!--<id>prod</id>-->
+            <!--<properties>-->
+                <!--<profiles.active>prod</profiles.active>-->
+            <!--</properties>-->
+        <!--</profile>-->
+    </profiles>
+
 
 </project>
