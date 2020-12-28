@@ -13,6 +13,7 @@ import cn.hutool.extra.mail.MailUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 
 import cn.hutool.http.HttpStatus;
+import com.zyuc.log.annotation.MyLog;
 import com.zyuc.log.service.MessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -55,6 +56,7 @@ public class TestController {
 
     @ApiOperation(value = "下载application", notes = "application下载")
     @GetMapping("/download/{fileName}")
+    @MyLog(value = "下载")
     public String test(@PathVariable("fileName") String fileName, HttpServletResponse response, HttpServletRequest request) throws Exception {
         ServletUtil.write(response, FileUtil.file(Directory + fileName));
         return fileName + "下载完成" + DateUtil.now();
@@ -62,6 +64,7 @@ public class TestController {
 
     @ApiOperation(value = "获取手机验证码", notes = "获取手机验证码")
     @GetMapping("/getPhoneCaptcha")
+    @MyLog(value = "获取验证码")
     public String getPhone(String phone) throws Exception {
         messageService.sendMessage(phone, captcha);
         return "success";
@@ -69,6 +72,7 @@ public class TestController {
 
     @ApiOperation(value = "登录", notes = "登录")
     @GetMapping("/doLogin")
+    @MyLog(value = "用户登录")
     public String doLogin(String captchaForm) throws Exception {
         if (captcha.equals(captchaForm)) {
             return "success";

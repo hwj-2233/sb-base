@@ -1,6 +1,7 @@
 package com.zyuc.log.controller;
 
 import cn.hutool.core.io.FileUtil;
+import com.zyuc.log.annotation.MyLog;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ public class UploadController {
 
 
     @PostMapping("/upload")
+    @MyLog(value = "上传文件")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
         try {
             file.transferTo(FileUtil.file(Directory + file.getOriginalFilename()));

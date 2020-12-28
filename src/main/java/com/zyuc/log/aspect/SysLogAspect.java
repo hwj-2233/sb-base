@@ -56,7 +56,7 @@ public class SysLogAspect {
         MyLog myLog = method.getAnnotation(MyLog.class);
         if (myLog != null) {
             String value = myLog.value();
-            sysLog.setOperation(value);//保存获取的操作
+            sysLog.setOperation(value);
         }
 
         //获取请求的类名
