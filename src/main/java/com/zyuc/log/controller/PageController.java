@@ -30,6 +30,7 @@ import java.util.List;
  **/
 @Controller
 @Slf4j
+@SuppressWarnings("all")
 public class PageController {
 
     @Autowired
@@ -43,7 +44,6 @@ public class PageController {
 
     @Value("${Directory}")
     private String Directory;
-
 
     @ApiOperation(value = "首页", notes = "index")
     @GetMapping("/index")

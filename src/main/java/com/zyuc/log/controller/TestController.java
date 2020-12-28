@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletResponse;
  **/
 @RestController
 @Api("controller")
+@SuppressWarnings("all")
 public class TestController {
 
     @Value("${server.port}")

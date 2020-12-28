@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
  **/
 @RestController
 @Slf4j
+@SuppressWarnings("all")
 public class UploadController {
 
     @Value("${Directory}")
@@ -37,7 +38,7 @@ public class UploadController {
         }
         log.info("上传成功" + file.getOriginalFilename());
 
-        return "sucess";
+        return "success";
     }
 
 
