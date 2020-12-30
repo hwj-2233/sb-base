@@ -27,63 +27,10 @@ import java.util.Date;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class LogApplicationTests {
-
-    @Autowired
-    MessageService messageService;
-
-    @Autowired
-    JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    ISysLogMapper sysLogMapper;
-
-    @Autowired
-    ITenantMapper tenantMapper;
-
-    @Autowired
-    RedisUtil redisUtil;
-
-
+    
     @Test
     public void contextLoads() {
-        System.out.println("hello");
-    }
-
-    @Test
-    public void test2() {
-        MailAccount account = new MailAccount();
-        account.setHost("smtp.qq.com");
-        account.setPort(587);
-        account.setAuth(true);
-        account.setFrom("2233128678@qq.com");
-        account.setUser("2233128678@qq.com");
-        account.setPass("nnqvmbfddddiecgi");
-
-        MailUtil.send(account, CollUtil.newArrayList("2233128678@qq.com"), "验证码", "24680", false);
-
-    }
-
-    @Test
-    public void test4() throws Exception {
-        IJWTInfo jwtInfo = new JWTInfo("1", "哈喽", "hwj");
-        String token = jwtTokenUtil.generateToken(jwtInfo);
-        System.err.println(token);
-
-    }
-
-    @Test
-    public void test5() throws Exception {
-        Tenant tenantUpdate = new Tenant();
-        tenantUpdate.setDescription("dashabi");
-        tenantUpdate.setId(111);
-        Integer tenant = tenantMapper.updateById(tenantUpdate);
-
-    }
-
-    @Test
-    public void test6() throws Exception {
-        redisUtil.set("上官婉儿","碧落恒指");
-
+        
     }
 
 }
