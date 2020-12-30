@@ -14,6 +14,7 @@ import com.zyuc.log.service.MessageService;
 import com.zyuc.log.util.IJWTInfo;
 import com.zyuc.log.util.JWTInfo;
 import com.zyuc.log.util.JwtTokenUtil;
+import com.zyuc.log.util.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class LogApplicationTests {
 
     @Autowired
     ITenantMapper tenantMapper;
+
+    @Autowired
+    RedisUtil redisUtil;
 
 
     @Test
@@ -78,7 +82,7 @@ public class LogApplicationTests {
 
     @Test
     public void test6() throws Exception {
-        System.out.println(Color.BLANK.getName());
+        redisUtil.set("上官婉儿","碧落恒指");
 
     }
 

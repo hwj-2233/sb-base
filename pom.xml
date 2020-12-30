@@ -161,17 +161,22 @@
             <artifactId>xxl-job-core</artifactId>
             <version>${xxl.job.version}</version>
         </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
     </dependencies>
 
     <!--打包插件-->
     <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
     <!--</build>-->
 
     <build>
@@ -238,10 +243,10 @@
         </profile>
         <!--生产环境-->
         <!--<profile>-->
-            <!--<id>prod</id>-->
-            <!--<properties>-->
-                <!--<profiles.active>prod</profiles.active>-->
-            <!--</properties>-->
+        <!--<id>prod</id>-->
+        <!--<properties>-->
+        <!--<profiles.active>prod</profiles.active>-->
+        <!--</properties>-->
         <!--</profile>-->
     </profiles>
 
