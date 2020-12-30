@@ -9,7 +9,7 @@
         <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zyuc</groupId>
-    <artifactId>sb-web</artifactId>
+    <artifactId>sb-base</artifactId>
     <version>3.2.1-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
