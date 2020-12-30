@@ -10,6 +10,7 @@ import me.zhyd.oauth.request.AuthGiteeRequest;
 import me.zhyd.oauth.request.AuthGithubRequest;
 import me.zhyd.oauth.request.AuthRequest;
 import me.zhyd.oauth.utils.AuthStateUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,18 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/oauth")
 @Slf4j
+@SuppressWarnings("all")
 public class JustAuthController {
+
+    @Value("${github.clientId}")
+    private String gitHubClientId;
+
+    @Value("${github.clientSecret}")
+    private String gitHubClientSecret;
+
+    private static final String QQ = "qq";
+
+    private static final String GITHUB = "github";
 
     /**
      * 获取授权链接并跳转到第三方授权页面
@@ -35,13 +47,13 @@ public class JustAuthController {
     @ApiOperation(value = "获取认证", notes = "获取认证")
     @RequestMapping("/render/{source}")
     public void renderAuth(@PathVariable("source") String source, HttpServletResponse response) throws IOException {
-        AuthRequest authRequest = new AuthGithubRequest(AuthConfig.builder()
-                .clientId("ceeca6d74a0650569319")
-                .clientSecret("cc74c669ebb1b53c027861e0c7ad3bcc9e70bff2")
-                .redirectUri("http://localhost:8088/oauth/callback/" + source)
-                .build());
-        String authorizeUrl = authRequest.authorize(AuthStateUtils.createState());
-        response.sendRedirect(authorizeUrl);
+        if (GITHUB.equals(source)) {
+            AuthRequest authRequest = getGitHubAuthRequest(source);
+            String authorizeUrl = authRequest.authorize(AuthStateUtils.createState());
+            response.sendRedirect(authorizeUrl);
+        } else {
+            response.sendRedirect("/index");
+        }
     }
 
     /**
@@ -53,14 +65,14 @@ public class JustAuthController {
     @ApiOperation(value = "回调地址", notes = "回调地址")
     @RequestMapping("/callback/{source}")
     public Object login(@PathVariable("source") String source, AuthCallback callback) {
-        AuthRequest authRequest = new AuthGithubRequest(AuthConfig.builder()
-                .clientId("ceeca6d74a0650569319")
-                .clientSecret("cc74c669ebb1b53c027861e0c7ad3bcc9e70bff2")
-                .redirectUri("http://localhost:8088/oauth/callback/" + source)
-                .build());
-        AuthResponse response = authRequest.login(callback);
-        log.info(JSON.toJSONString(response));
-        return "OK";
+        if (GITHUB.equals(source)) {
+            AuthRequest authRequest = getGitHubAuthRequest(source);
+            AuthResponse response = authRequest.login(callback);
+            log.info(JSON.toJSONString(response));
+            return "OK";
+        } else {
+            return "登录类型错误(错误码：2233128678)";
+        }
     }
 
     /**
@@ -68,4 +80,11 @@ public class JustAuthController {
      *
      * @return AuthRequest
      */
+    private AuthRequest getGitHubAuthRequest(String source) {
+        return new AuthGithubRequest(AuthConfig.builder()
+                .clientId(gitHubClientId)
+                .clientSecret(gitHubClientSecret)
+                .redirectUri("http://localhost:8088/oauth/callback/" + source)
+                .build());
+    }
 }

@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.zyuc.log.constant.Color;
 import com.zyuc.log.entity.SysLog;
 import com.zyuc.log.entity.Tenant;
-import com.zyuc.log.entity.User;
 import com.zyuc.log.mapper.ISysLogMapper;
 import com.zyuc.log.mapper.ITenantMapper;
 import com.zyuc.log.service.MessageService;
@@ -40,8 +39,6 @@ public class LogApplicationTests {
     @Autowired
     ITenantMapper tenantMapper;
 
-    @Autowired
-    User user;
 
     @Test
     public void contextLoads() {
