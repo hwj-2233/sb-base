@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 @EnableAsync
 @MapperScan("com.zyuc.log.mapper")
+@SuppressWarnings("all")
 public class LogApplication {
 
 	public static void main(String[] args) {
