@@ -51,8 +51,6 @@ public class JustAuthController {
             AuthRequest authRequest = getGitHubAuthRequest(source);
             String authorizeUrl = authRequest.authorize(AuthStateUtils.createState());
             response.sendRedirect(authorizeUrl);
-        } else {
-            response.sendRedirect("/index");
         }
     }
 
