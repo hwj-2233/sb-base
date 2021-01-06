@@ -7,6 +7,9 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author hongwj
  * @date 2020/12/30
@@ -22,13 +25,21 @@ public class DirectRabbitConfig {
         //   return new Queue("TestDirectQueue",true,true,false);
 
         //一般设置一下队列的持久化就好,其余两个就是默认false
-        return new Queue("TestDirectQueue",true);
+
+
+//        Map<String, Object> map = new HashMap<>(2);
+//        map.put("x-dead-letter-exchange", "dead-letter-exchange");
+//        map.put("x-dead-letter-routing-key", "dead-letter-routing-key");
+//        配置死信参数
+
+        return new Queue("TestDirectQueue", true);
     }
 
     @Bean
     DirectExchange TestDirectExchange() {
         //  return new DirectExchange("TestDirectExchange",true,true);
-        return new DirectExchange("TestDirectExchange",true,false);
+
+        return new DirectExchange("TestDirectExchange", true, false);
     }
 
 
@@ -39,12 +50,10 @@ public class DirectRabbitConfig {
     }
 
 
-
     @Bean
     DirectExchange lonelyDirectExchange() {
         return new DirectExchange("lonelyDirectExchange");
     }
-
 
 
 }

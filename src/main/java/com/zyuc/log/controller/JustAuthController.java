@@ -1,6 +1,7 @@
 package com.zyuc.log.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.zyuc.log.annotation.MyLog;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import me.zhyd.oauth.config.AuthConfig;
@@ -46,6 +47,7 @@ public class JustAuthController {
      */
     @ApiOperation(value = "获取认证", notes = "获取认证")
     @RequestMapping("/render/{source}")
+    @MyLog("三方登录授权")
     public void renderAuth(@PathVariable("source") String source, HttpServletResponse response) throws IOException {
         if (GITHUB.equals(source)) {
             AuthRequest authRequest = getGitHubAuthRequest(source);
@@ -62,6 +64,7 @@ public class JustAuthController {
      */
     @ApiOperation(value = "回调地址", notes = "回调地址")
     @RequestMapping("/callback/{source}")
+    @MyLog("获取三方用户信息")
     public Object login(@PathVariable("source") String source, AuthCallback callback) {
         if (GITHUB.equals(source)) {
             AuthRequest authRequest = getGitHubAuthRequest(source);
