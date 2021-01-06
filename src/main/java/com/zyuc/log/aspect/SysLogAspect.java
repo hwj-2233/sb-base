@@ -33,6 +33,9 @@ import java.util.Date;
 @Slf4j
 public class SysLogAspect {
 
+    @Autowired
+    private  HttpServletRequest request;
+
 
     @Autowired
     private ISysLogMapper sysLogService;
@@ -44,9 +47,6 @@ public class SysLogAspect {
 
     @AfterReturning("logPointCut()")
     public void saveSysLog(JoinPoint joinPoint) {
-
-        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
 
         log.info("日志保存开始---->");
         //保存日志
