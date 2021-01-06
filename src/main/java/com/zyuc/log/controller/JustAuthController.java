@@ -68,9 +68,9 @@ public class JustAuthController {
             AuthResponse response = authRequest.login(callback);
             log.info(JSON.toJSONString(response));
             return "OK";
-        } else {
-            return "登录类型错误(错误码：2233128678)";
         }
+
+        return "登录类型错误(错误码：2233128678)";
     }
 
     /**
