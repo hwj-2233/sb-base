@@ -24,7 +24,14 @@ public class LogApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LogApplication.class, args);
-        log.info("项目启动成功(*╹▽╹*)<><><><><>(〃'▽'〃)" + DateUtil.now());
+        System.out.println("     _             _                                                   _ \n" +
+                "    | |           | |                                                 | |\n" +
+                " ___| |_ __ _ _ __| |_           ___ _   _  ___ ___ ___  ___ ___      | |\n" +
+                "/ __| __/ _` | '__| __|         / __| | | |/ __/ __/ _ \\/ __/ __|     | |\n" +
+                "\\__ \\ || (_| | |  | |_          \\__ \\ |_| | (_| (_|  __/\\__ \\__ \\     |_|\n" +
+                "|___/\\__\\__,_|_|   \\__|         |___/\\__,_|\\___\\___\\___||___/___/     (_)\n" +
+                "                                                                         \n" +
+                "                                                                         ");
     }
 
 }
