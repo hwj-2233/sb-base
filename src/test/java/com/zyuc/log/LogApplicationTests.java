@@ -15,6 +15,7 @@ import com.zyuc.log.util.IJWTInfo;
 import com.zyuc.log.util.JWTInfo;
 import com.zyuc.log.util.JwtTokenUtil;
 import com.zyuc.log.util.RedisUtil;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,9 @@ import java.util.Date;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class LogApplicationTests {
-    
+
     @Test
     public void contextLoads() {
-        System.err.println(LocalDate.now().toString());
         
     }
 

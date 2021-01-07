@@ -75,7 +75,7 @@ public class SysLogAspect {
 
         sysLog.setCreateDate(new Date());
         //获取用户名
-        sysLog.setUsername("内部测试");
+        sysLog.setUsername(request.getSession().getId());
         sysLog.setIp(ServletUtil.getClientIP(request));
 
         //调用service保存SysLog实体类到数据库
