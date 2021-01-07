@@ -30,7 +30,7 @@ public class DirectRabbitConfig {
 //        Map<String, Object> map = new HashMap<>(2);
 //        map.put("x-dead-letter-exchange", "dead-letter-exchange");
 //        map.put("x-dead-letter-routing-key", "dead-letter-routing-key");
-//        配置死信参数
+//        配置死信参数;
 
         return new Queue("TestDirectQueue", true);
     }
