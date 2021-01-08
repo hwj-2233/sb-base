@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,7 @@ import java.util.UUID;
  * @Description :
  **/
 @RestController
+@RequestMapping("/base")
 public class SendMessageController {
 
     //使用RabbitTemplate,这提供了接收/发送等等方法

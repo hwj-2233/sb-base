@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import redis.clients.jedis.Jedis;
 
@@ -31,6 +32,7 @@ import java.util.List;
 @Controller
 @Slf4j
 @SuppressWarnings("all")
+@RequestMapping("/base")
 public class PageController {
 
     @Autowired
