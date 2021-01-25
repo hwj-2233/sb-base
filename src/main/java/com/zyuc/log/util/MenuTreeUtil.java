@@ -12,7 +12,7 @@ import java.util.List;
  **/
 public class MenuTreeUtil {
     /**
-     * 根节点 默认为-1，没有则为null
+     * 根节点 默认为-1
      * @param menuList
      * @param rootId
      * @return
