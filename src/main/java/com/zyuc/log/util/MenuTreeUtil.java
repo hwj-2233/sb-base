@@ -12,15 +12,15 @@ import java.util.List;
  **/
 public class MenuTreeUtil {
     /**
-     * pid为父节点，没有则为null,默认是-1
+     * 根节点 默认为-1，没有则为null
      * @param menuList
-     * @param pid
+     * @param rootId
      * @return
      */
-    private static List<Menu> buildMenuTree(List<Menu> menuList, String pid) {
+    private static List<Menu> buildMenuTree(List<Menu> menuList, String rootId) {
         List<Menu> treeList = new ArrayList<>();
         menuList.forEach(menu -> {
-            if (StringUtils.equals(pid, menu.getParentId())) {
+            if (StringUtils.equals(rootId, menu.getParentId())) {
                 menu.setChildMenus(buildMenuTree(menuList, menu.getId()));
                 treeList.add(menu);
             }
