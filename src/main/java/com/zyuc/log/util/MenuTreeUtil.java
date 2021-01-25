@@ -11,7 +11,12 @@ import java.util.List;
  * @date 2021/01/25
  **/
 public class MenuTreeUtil {
-
+    /**
+     * pid为父节点，没有则为null,默认是-1
+     * @param menuList
+     * @param pid
+     * @return
+     */
     private static List<Menu> buildMenuTree(List<Menu> menuList, String pid) {
         List<Menu> treeList = new ArrayList<>();
         menuList.forEach(menu -> {
