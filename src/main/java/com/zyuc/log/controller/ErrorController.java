@@ -1,10 +1,11 @@
 package com.zyuc.log.controller;
 
+import cn.hutool.core.date.DateUtil;
+import com.alibaba.fastjson.JSON;
+import com.zyuc.log.entity.User;
 import com.zyuc.log.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author hongwj
@@ -18,8 +19,8 @@ public class ErrorController {
     TestService testService;
 
     @GetMapping("/test")
-    public String error() throws Exception {
-        testService.hello(2);
+    public String error( User user) throws Exception {
+        System.out.println(DateUtil.formatDateTime(user.getTime()));
         return "ok";
     }
 }
