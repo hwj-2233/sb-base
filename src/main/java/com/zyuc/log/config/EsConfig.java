@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EsConfig {
 
-    @Value("${es.host}")
+    @Value("${com.waner.es.host}")
     private String host;
 
-    @Value("${es.port}")
+    @Value("${com.waner.es.port}")
     private int port;
 
-    @Value("${es.protocol}")
+    @Value("${com.waner.es.protocol}")
     private String protocol;
 
     @Bean
