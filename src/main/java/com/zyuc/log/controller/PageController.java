@@ -44,7 +44,7 @@ public class PageController {
     @Autowired
     private MessageService messageService;
 
-    @Value("${Directory}")
+    @Value("${com.waner.Directory}")
     private String Directory;
 
     @ApiOperation(value = "首页", notes = "index")

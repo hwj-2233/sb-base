@@ -45,7 +45,7 @@ public class TestController {
     @Value("${server.port}")
     private String port;
 
-    @Value("${Directory}")
+    @Value("${com.waner.Directory}")
     private String Directory;
 
     @Value("${captcha}")

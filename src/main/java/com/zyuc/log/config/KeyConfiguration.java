@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KeyConfiguration {
 
-    @Value("${jwt.rsa-secret}")
+    @Value("${com.waner.jwt.rsa-secret}")
     private String userSecret;
-    @Value("${jwt.expire}")
+    @Value("${com.waner.jwt.expire}")
     private int expire;
-    @Value("${jwt.token-header}")
+    @Value("${com.waner.jwt.token-header}")
     private String tokenHeader = "zy_token";
     private String dialectType = "mysql";
-    @Value("${token.expire:300}")
+    @Value("${com.waner.token.expire:300}")
     private int tokenexpire;
 
     public void setUserSecret(String userSecret) {

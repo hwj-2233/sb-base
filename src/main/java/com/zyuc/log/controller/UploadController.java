@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 @SuppressWarnings("all")
 public class UploadController {
 
-    @Value("${Directory}")
+    @Value("${com.waner.Directory}")
     private String Directory;
 
 

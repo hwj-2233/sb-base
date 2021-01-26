@@ -29,10 +29,10 @@ import java.io.IOException;
 @SuppressWarnings("all")
 public class JustAuthController {
 
-    @Value("${github.clientId}")
+    @Value("${com.waner.github.clientId}")
     private String gitHubClientId;
 
-    @Value("${github.clientSecret}")
+    @Value("${com.waner.github.clientSecret}")
     private String gitHubClientSecret;
 
     private static final String QQ = "qq";

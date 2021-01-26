@@ -16,7 +16,7 @@ public class TestTask {
     @Autowired
     private MailService mailService;
 
-    @Scheduled(cron = "${data.consumer.cron}")
+    @Scheduled(cron = "${com.waner.data.consumer.cron}")
     public void report() {
         mailService.sendEmail("晚安打工人！");
 
