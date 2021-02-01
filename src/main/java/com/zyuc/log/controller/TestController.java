@@ -48,7 +48,7 @@ public class TestController {
     @Value("${com.waner.Directory}")
     private String Directory;
 
-    @Value("${captcha}")
+    @Value("${com.waner.captcha}")
     private String captcha;
 
     @Autowired

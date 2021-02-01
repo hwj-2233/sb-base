@@ -1,5 +1,7 @@
 package com.zyuc.log.config;
 
+import lombok.Data;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -21,15 +23,7 @@ public class JwtConfig {
         return expire;
     }
 
-    public void setExpire(String expire) {
-        this.expire = expire;
-    }
-
     public String getSecret() {
         return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
     }
 }

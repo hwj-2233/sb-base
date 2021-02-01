@@ -245,6 +245,11 @@
             <artifactId>elasticsearch</artifactId>
             <version>7.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>cn.snowheart</groupId>
+            <artifactId>spring-boot-dingtalk-robot-starter</artifactId>
+            <version>1.0.3.RELEASE</version>
+        </dependency>
 
     </dependencies>
 
