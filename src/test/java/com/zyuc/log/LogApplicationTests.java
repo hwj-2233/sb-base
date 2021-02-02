@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
+import cn.hutool.http.HttpUtil;
 import cn.snowheart.dingtalk.robot.starter.client.DingTalkRobotClient;
 import cn.snowheart.dingtalk.robot.starter.entity.*;
 import cn.snowheart.dingtalk.robot.starter.type.HideAvatarType;
@@ -331,6 +332,24 @@ public class LogApplicationTests {
     @Test
     public void test1() {
         myService.say();
+
+    }
+
+    @Test
+    public void test2() {
+        String result1 = HttpUtil.post("http://172.16.0.23:8086/api/app/getTypes","{\n" +
+                "\t\"dataBelongCom\": \"\",\n" +
+                "\t\"dataBelongRole\": \"\",\n" +
+                "\t\"endTime\": \"\",\n" +
+                "\t\"eventId\": [],\n" +
+                "\t\"eventLevel\": [],\n" +
+                "\t\"eventType\": [],\n" +
+                "\t\"host\": [],\n" +
+                "\t\"srcIp\": \"\",\n" +
+                "\t\"startTime\": \"\"\n" +
+                "}");
+        System.err.println(result1);
+
 
     }
 }

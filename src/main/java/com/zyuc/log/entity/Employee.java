@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
  * @author hongwj
  * @date 2021/01/26
  **/
-@Component
-@ConfigurationProperties(prefix = "com.waner.employee")
+@Data
 public class Employee {
 
     private String name;
