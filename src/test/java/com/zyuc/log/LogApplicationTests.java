@@ -8,7 +8,9 @@ import cn.snowheart.dingtalk.robot.starter.client.DingTalkRobotClient;
 import cn.snowheart.dingtalk.robot.starter.entity.*;
 import cn.snowheart.dingtalk.robot.starter.type.HideAvatarType;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.waner.starter.service.MyService;
 import com.zyuc.log.constant.Color;
+import com.zyuc.log.entity.Employee;
 import com.zyuc.log.entity.SysLog;
 import com.zyuc.log.entity.Tenant;
 import com.zyuc.log.mapper.ISysLogMapper;
@@ -37,9 +39,15 @@ public class LogApplicationTests {
     @Autowired
     private DingTalkRobotClient client;
 
+    @Autowired
+    private Employee employee;
+
+    @Autowired
+    private MyService myService;
+
     @Test
     public void contextLoads() {
-        
+
     }
 
     /**
@@ -227,6 +235,7 @@ public class LogApplicationTests {
 
     /**
      * 测试 DingTalkRobotClient#sendFeedCardMessage() 发送FeedCard消息
+     *
      * @throws InterruptedException
      */
     @Test
@@ -318,4 +327,10 @@ public class LogApplicationTests {
             "1. item1\n" +
             "2. item2";
 
+
+    @Test
+    public void test1() {
+        myService.say();
+
+    }
 }

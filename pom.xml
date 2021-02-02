@@ -250,6 +250,12 @@
             <artifactId>spring-boot-dingtalk-robot-starter</artifactId>
             <version>1.0.3.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.waner</groupId>
+            <artifactId>mytest-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
 
     </dependencies>
 
