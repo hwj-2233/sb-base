@@ -8,7 +8,9 @@ import cn.hutool.http.HttpUtil;
 import cn.snowheart.dingtalk.robot.starter.client.DingTalkRobotClient;
 import cn.snowheart.dingtalk.robot.starter.entity.*;
 import cn.snowheart.dingtalk.robot.starter.type.HideAvatarType;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.waner.oss.service.OssService;
 import com.waner.starter.service.MyService;
 import com.zyuc.log.constant.Color;
 import com.zyuc.log.entity.Employee;
@@ -31,6 +33,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -41,10 +44,10 @@ public class LogApplicationTests {
     private DingTalkRobotClient client;
 
     @Autowired
-    private Employee employee;
+    private MyService myService;
 
     @Autowired
-    private MyService myService;
+    private OssService ossService;
 
     @Test
     public void contextLoads() {
@@ -337,7 +340,7 @@ public class LogApplicationTests {
 
     @Test
     public void test2() {
-        String result1 = HttpUtil.post("http://172.16.0.23:8086/api/app/getTypes","{\n" +
+        String result1 = HttpUtil.post("http://172.16.0.23:8086/api/app/getTypes", "{\n" +
                 "\t\"dataBelongCom\": \"\",\n" +
                 "\t\"dataBelongRole\": \"\",\n" +
                 "\t\"endTime\": \"\",\n" +
@@ -350,6 +353,11 @@ public class LogApplicationTests {
                 "}");
         System.err.println(result1);
 
+    }
+
+    @Test
+    public void test3() {
+        ossService.upload(FileUtil.newFile("D:/log/2020-12-07.csv"));
 
     }
 }

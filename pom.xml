@@ -255,7 +255,12 @@
             <artifactId>mytest-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <!--oss 启动器-->
+        <dependency>
+            <groupId>com.waner</groupId>
+            <artifactId>oss-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
