@@ -47,10 +47,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--日志依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--</dependency>-->
         <!--模板引擎-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -194,6 +194,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+
         <!--如果需要使用undertow服务器 请自行解锁-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
@@ -250,6 +257,7 @@
             <artifactId>spring-boot-dingtalk-robot-starter</artifactId>
             <version>1.0.3.RELEASE</version>
         </dependency>
+        <!--我的启动器-->
         <dependency>
             <groupId>com.waner</groupId>
             <artifactId>mytest-spring-boot-starter</artifactId>
@@ -262,6 +270,11 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
     <!--打包插件-->
@@ -277,43 +290,28 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <!--fork: 如果没有该项配置,整个 devtools 不会起作用-->
-                    <fork>true</fork>
-                    <!--启动类-->
-                    <mainClass>com.com.zyuc.log.LogApplication</mainClass>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.zyuc.log.LogApplication</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
                         <goals>
-                            <!--创建一个自动可执行的jar或war文件 -->
-                            <goal>repackage</goal>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <!-- 资源根目录排除各环境的配置，防止在生成目录中多余其它目录 -->
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>application*.properties</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>application.properties</include>
-                    <include>application-${profiles.active}.properties</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
     <!-- 不同环境的配置 -->

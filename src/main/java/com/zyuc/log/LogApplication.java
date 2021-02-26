@@ -1,6 +1,7 @@
 package com.zyuc.log;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Mapper;
 
@@ -33,5 +34,4 @@ public class LogApplication {
                 "                                                                         \n" +
                 "                                                                         ");
     }
-
 }

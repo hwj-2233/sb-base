@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @author hongwj
  * @date 2021/01/26
  **/
-@Component
+@Configuration
 public class JwtConfig {
 
     @Value("${com.waner.jwt.expire}")

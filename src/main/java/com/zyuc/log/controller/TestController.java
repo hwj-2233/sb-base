@@ -14,6 +14,7 @@ import cn.hutool.extra.servlet.ServletUtil;
 
 import cn.hutool.http.HttpStatus;
 import com.zyuc.log.annotation.MyLog;
+import com.zyuc.log.entity.DepartmentDto;
 import com.zyuc.log.service.MessageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,12 +26,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.util.Objects;
 
 
 /**
@@ -64,12 +68,11 @@ public class TestController {
     }
 
     @ApiOperation(value = "获取手机验证码", notes = "获取手机验证码")
-    @GetMapping("/getPhoneCaptcha")
-    @MyLog(value = "获取验证码")
-    public String getPhone(String phone) throws Exception {
-        messageService.sendMessage(phone, captcha);
-        return "success";
+    @RequestMapping("/captcha")
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        com.wf.captcha.utils.CaptchaUtil.out(request, response);
     }
+
 
     @ApiOperation(value = "登录", notes = "登录")
     @GetMapping("/doLogin")
@@ -80,6 +83,17 @@ public class TestController {
         } else {
             return "false";
         }
+    }
+
+    @PostMapping("add_department")
+    @ApiOperation(value = "添加部门")
+    public String addDepartment(@Valid DepartmentDto departmentDto) {
+        try {
+        }
+        catch (Exception e){
+            return "失败";
+        }
+        return "成功";
     }
 
 }

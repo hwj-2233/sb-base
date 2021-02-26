@@ -22,8 +22,8 @@ public class ControllerExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public String handleException(Exception ex) {
-        log.info("程序异常：" + ex.getMessage());
-        return "异常";
+        log.info(ex.getMessage());
+        return ex.getMessage();
     }
 
 }

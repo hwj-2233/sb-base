@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.waner.oss.service.OssService;
 import com.waner.starter.service.MyService;
+import com.zyuc.log.config.JwtConfig;
 import com.zyuc.log.constant.Color;
 import com.zyuc.log.entity.Employee;
 import com.zyuc.log.entity.SysLog;
@@ -30,6 +31,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
+import javax.xml.ws.spi.WebServiceFeatureAnnotation;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +41,9 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @Slf4j
 public class LogApplicationTests {
+
+    @Autowired
+    private JwtConfig jwtConfig;
 
     @Autowired
     private DingTalkRobotClient client;
@@ -357,7 +362,7 @@ public class LogApplicationTests {
 
     @Test
     public void test3() {
-        ossService.upload(FileUtil.newFile("D:/log/2020-12-07.csv"));
+        System.err.println(jwtConfig.getSecret());
 
     }
 }
